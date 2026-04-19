@@ -2,6 +2,9 @@
 
 A complete web-based solution for managing pharmacy inventory, customers, sales, and billing.
 
+![HTML](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![CSS](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 ![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
 ![Express.js](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)
 ![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
@@ -25,6 +28,7 @@ Pharmacy Management System is a full-stack web application built using **Node.js
 
 | Layer | Technology |
 |-------|------------|
+| Frontend | HTML, CSS, JavaScript |
 | Runtime | Node.js |
 | Framework | Express.js |
 | Database | MySQL (mysql2 package) |
@@ -226,4 +230,4 @@ GitHub: [github.com/rounakm20](https://github.com/rounakm20)
 
 ---
 
-*Made with coffee and obsession in India 🇮🇳*
+*Made with ❤️ in India 🇮🇳*
