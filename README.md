@@ -1,47 +1,79 @@
-💊 Pharmacy Management System
+# 💊 Pharmacy Management System
+
 A complete web-based solution for managing pharmacy inventory, customers, sales, and billing.
-  Node.js      Express.js      MySQL      REST API      Port 3000    
 
-📋 Project Overview
-Pharmacy Management System is a full-stack web application built using Node.js and Express.js on the backend, with a MySQL relational database for persistent storage. It exposes a RESTful API for managing medicines, customers, and sales transactions — complete with automatic stock management and billing logic.
-Key Highlights:
-•	Real-time inventory tracking with automatic stock deduction on sale
-•	Complete CRUD operations for Medicines, Customers, and Sales
-•	Stock validation — prevents overselling with insufficient inventory check
-•	Automatic stock restoration when a sale is deleted/reversed
-•	Clean RESTful API endpoints ready for frontend integration
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
+![Express.js](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)
+![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white)
 
-🛠️ Tech Stack
+---
 
-Runtime	Node.js
-Framework	Express.js
-Database	MySQL 2 (mysql2 package)
-Middleware	CORS, Body-Parser, Express Static
-Port	3000 (default)
-Architecture	REST API + Static File Server
+## 📋 Project Overview
 
-📁 Project Structure
+Pharmacy Management System is a full-stack web application built using **Node.js** and **Express.js** on the backend, with a **MySQL** relational database for persistent storage. It exposes a RESTful API for managing medicines, customers, and sales transactions — complete with automatic stock management and billing logic.
+
+**Key Highlights:**
+- ✅ Real-time inventory tracking with automatic stock deduction on sale
+- ✅ Complete CRUD operations for Medicines, Customers, and Sales
+- ✅ Stock validation — prevents overselling with insufficient inventory check
+- ✅ Automatic stock restoration when a sale is deleted/reversed
+- ✅ Clean RESTful API endpoints ready for frontend integration
+
+---
+
+## 🛠️ Tech Stack
+
+| Layer | Technology |
+|-------|------------|
+| Runtime | Node.js |
+| Framework | Express.js |
+| Database | MySQL (mysql2 package) |
+| Middleware | CORS, Body-Parser, Express Static |
+| Port | 3000 (default) |
+
+---
+
+## 📁 Project Structure
+
+```
 pharmacy-management/
 ├── server.js          # Main Express server & all API routes
-├── public/            # Static frontend files (HTML/CSS/JS)
+├── public/            # Static frontend files
 │   └── index.html     # Frontend UI
 ├── package.json       # Dependencies
 └── README.md          # This file
+```
 
-⚙️ Prerequisites
-Make sure you have the following installed on your machine:
-•	Node.js (v14 or higher)
-•	MySQL Server (v5.7 or higher)
-•	npm (comes with Node.js)
+---
 
-🚀 Installation & Setup
-Step 1: Clone the Repository
+## ⚙️ Prerequisites
+
+- Node.js (v14 or higher)
+- MySQL Server (v5.7 or higher)
+- npm (comes with Node.js)
+
+---
+
+## 🚀 Installation & Setup
+
+### Step 1: Clone the Repository
+
+```bash
 git clone https://github.com/rounakm20/pharmacy-management.git
 cd pharmacy-management
-Step 2: Install Dependencies
+```
+
+### Step 2: Install Dependencies
+
+```bash
 npm install
-Step 3: Setup MySQL Database
+```
+
+### Step 3: Setup MySQL Database
+
 Run the following SQL to create the database and tables:
+
+```sql
 CREATE DATABASE pharmacy_management;
 USE pharmacy_management;
 
@@ -72,46 +104,67 @@ CREATE TABLE sales (
   FOREIGN KEY (customer_id) REFERENCES customers(id),
   FOREIGN KEY (medicine_id) REFERENCES medicines(id)
 );
-Step 4: Configure Database Password
-In server.js, update the MySQL password on line 14:
+```
+
+### Step 4: Configure Database Password
+
+In `server.js`, update the MySQL password:
+
+```javascript
 const db = mysql.createConnection({
   host: 'localhost',
   user: 'root',
   password: 'YOUR_PASSWORD_HERE',  // ← Change this
   database: 'pharmacy_management'
 });
-Step 5: Start the Server
+```
+
+### Step 5: Start the Server
+
+```bash
 node server.js
-Server will start at: http://localhost:3000
+```
 
-📡 API Reference
-Medicines  /api/medicines
+Server will start at: **http://localhost:3000**
 
-Method	Endpoint	Description
-GET	/api/medicines	Get all medicines (sorted by name)
-GET	/api/medicines/:id	Get a single medicine by ID
-POST	/api/medicines	Add a new medicine
-PUT	/api/medicines/:id	Update medicine details
-DELETE	/api/medicines/:id	Delete a medicine
+---
 
-Customers  /api/customers
+## 📡 API Reference
 
-Method	Endpoint	Description
-GET	/api/customers	Get all customers (sorted by name)
-GET	/api/customers/:id	Get a single customer by ID
-POST	/api/customers	Add a new customer
-PUT	/api/customers/:id	Update customer details
-DELETE	/api/customers/:id	Delete a customer
+### Medicines — `/api/medicines`
 
-Sales  /api/sales
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/api/medicines` | Get all medicines |
+| GET | `/api/medicines/:id` | Get a single medicine |
+| POST | `/api/medicines` | Add a new medicine |
+| PUT | `/api/medicines/:id` | Update medicine details |
+| DELETE | `/api/medicines/:id` | Delete a medicine |
 
-Method	Endpoint	Description
-GET	/api/sales	Get all sales with customer & medicine names
-POST	/api/sales	Record a new sale (auto-deducts stock)
-DELETE	/api/sales/:id	Delete a sale (auto-restores stock)
+### Customers — `/api/customers`
 
-📦 Request Body Examples
-POST /api/medicines
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/api/customers` | Get all customers |
+| GET | `/api/customers/:id` | Get a single customer |
+| POST | `/api/customers` | Add a new customer |
+| PUT | `/api/customers/:id` | Update customer details |
+| DELETE | `/api/customers/:id` | Delete a customer |
+
+### Sales — `/api/sales`
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/api/sales` | Get all sales with names |
+| POST | `/api/sales` | Record a new sale (auto-deducts stock) |
+| DELETE | `/api/sales/:id` | Delete a sale (auto-restores stock) |
+
+---
+
+## 📦 Request Body Examples
+
+### POST `/api/medicines`
+```json
 {
   "name": "Paracetamol 500mg",
   "category": "Analgesic",
@@ -120,15 +173,19 @@ POST /api/medicines
   "expiry": "2026-12-31",
   "supplier": "MedCorp Ltd"
 }
+```
 
-POST /api/customers
+### POST `/api/customers`
+```json
 {
   "name": "Rahul Sharma",
   "phone": "9876543210",
   "email": "rahul@example.com"
 }
+```
 
-POST /api/sales
+### POST `/api/sales`
+```json
 {
   "customer_id": 1,
   "medicine_id": 2,
@@ -136,23 +193,37 @@ POST /api/sales
   "total": 27.50,
   "sale_date": "2025-11-27"
 }
+```
 
-🔄 Business Logic
-The following automated operations happen server-side:
+---
 
-New Sale	Checks available stock → Rejects if insufficient → Deducts quantity from medicines table
-Delete Sale	Restores the sold quantity back to medicines table automatically
-Stock Validation	Returns 400 error with exact available quantity if overselling is attempted
-Sales Report	Joins all 3 tables to return full sale details with names (not just IDs)
+## 🔄 Business Logic
 
-📦 npm Dependencies
+| Operation | What Happens |
+|-----------|-------------|
+| New Sale | Checks stock → Rejects if insufficient → Deducts quantity |
+| Delete Sale | Automatically restores stock back |
+| Stock Validation | Returns 400 error with available quantity if overselling |
+| Sales Report | Joins all 3 tables — returns names not just IDs |
 
-express	^4.x — Web framework & routing
-mysql2	^3.x — MySQL database driver (Promise support)
-cors	^2.x — Cross-Origin Resource Sharing middleware
-body-parser	^1.x — Parse JSON request bodies
+---
 
-👨‍💻 Author
-Rounak Mishra
-GitHub: github.com/rounakm20
-Made with coffee and obsession in India 
+## 📦 npm Dependencies
+
+| Package | Purpose |
+|---------|---------|
+| express | Web framework & routing |
+| mysql2 | MySQL database driver |
+| cors | Cross-Origin Resource Sharing |
+| body-parser | Parse JSON request bodies |
+
+---
+
+## 👨‍💻 Author
+
+**Rounak Mishra**  
+GitHub: [github.com/rounakm20](https://github.com/rounakm20)
+
+---
+
+*Made with coffee and obsession in India 🇮🇳*
